@@ -1,6 +1,6 @@
 # Clockwork SMS API Wrapper for PHP
 
-This wrapper lets you interact with Clockwork without the hassle of having to create any XML or make HTTP calls.
+This wrapper lets you interact with Clockwork without the hassle of having to create any XML or make HTTP calls. This version of the wrapper has been forked and updated to work with newer version of PHP by Rock & Scissor as Mediaburst was acquired by Textanywhere which means the original repo was abandoned.
 
 ## What's Clockwork?
 
@@ -13,11 +13,11 @@ This wrapper lets you interact with Clockwork without the hassle of having to cr
 ## Usage
 
 ### Installing with composer
-The easiest way to get Clockwork is to use [Composer][4] to automatically download and include it in your project. Setup [Composer][4] and add us to your composer.json 
+The easiest way to get Clockwork is to use [Composer][4] to automatically download and include it in your project. Setup [Composer][4] and add us to your composer.json
 ```php
 {
     "require": {
-        "mediaburst/clockworksms": "2.0.*"
+        "rockandscissor/clockworksms": "2.0.*"
     }
 }
 ```
@@ -46,7 +46,7 @@ We recommend you use batch sizes of 500 messages or fewer. By limiting the batch
 
 ```php
 $clockwork = new mediaburst\ClockworkSMS\Clockwork( $API_KEY ); //Be careful not to post your API Keys to public repositories.
-$messages = array( 
+$messages = array(
     array( 'to' => '441234567891', 'message' => 'This is a test!' ),
     array( 'to' => '441234567892', 'message' => 'This is a test 2!' )
 );
@@ -101,7 +101,7 @@ The result will look something like this:
 
     )
 
-If a message fails, the reason for failure will be set in `error_code` and `error_message`.  
+If a message fails, the reason for failure will be set in `error_code` and `error_message`.
 
 For example, if you send to invalid phone number "abc":
 
@@ -125,18 +125,18 @@ Check your available SMS balance:
 ```php
 $clockwork = new mediaburst\ClockworkSMS\Clockwork( $API_KEY ); //Be careful not to post your API Keys to public repositories.
 $clockwork->checkBalance();
-```    
+```
 
 This will return:
 
-    Array 
+    Array
     (
         [symbol] => £
         [balance] => 351.91
         [code] => GBP
         [account_type] => PAYG
     )
-    
+
 Account Type can be either PAYG or Invoice.
 
 ### Handling Errors
@@ -144,9 +144,9 @@ Account Type can be either PAYG or Invoice.
 The Clockwork wrapper will throw a `ClockworkException` if the entire call failed.
 
 ```php
-try 
+try
 {
-    $clockwork = new mediaburst\ClockworkSMS\Clockwork( 'invalid_key' );
+    $clockwork = new rockandscissor\ClockworkSMS\Clockwork( 'invalid_key' );
     $message = array( 'to' => 'abc', 'message' => 'This is a test!' );
     $result = $clockwork->send( $message );
 }
@@ -155,7 +155,7 @@ catch( mediaburst\ClockworkSMS\ClockworkException $e )
     print $e->getMessage();
     // Invalid API Key
 }
-```    
+```
 
 ### Advanced Usage
 
@@ -169,11 +169,11 @@ See the [Clockwork Documentation](http://www.clockworksms.com/doc/clever-stuff/x
 
     The from address displayed on a phone when they receive a message
 
-*   $long [boolean]  
+*   $long [boolean]
 
     Enable long SMS. A standard text can contain 160 characters, a long SMS supports up to 459.
 
-*   $truncate [nullable boolean]  
+*   $truncate [nullable boolean]
 
     Truncate the message payload if it is too long, if this is set to false, the message will fail if it is too long.
 
@@ -185,7 +185,7 @@ See the [Clockwork Documentation](http://www.clockworksms.com/doc/clever-stuff/x
 	* replace		 - Replace some common invalid characters such as replacing curved quotes with straight quotes
 
 *   $ssl [boolean, default: true]
-  
+
     Use SSL when making an HTTP request to the Clockwork API
 
 
@@ -200,7 +200,7 @@ In this example both messages will be sent from Clockwork:
 ```php
 $options = array( 'from' => 'Clockwork' );
 $clockwork = new mediaburst\ClockworkSMS\Clockwork( $API_KEY, $options ); //Be careful not to post your API Keys to public repositories.
-$messages = array( 
+$messages = array(
     array( 'to' => '441234567891', 'message' => 'This is a test!' ),
     array( 'to' => '441234567892', 'message' => 'This is a test 2!' )
 );
@@ -215,7 +215,7 @@ In this example, one message will be from Clockwork and the other from 84433:
 
 ```php
 $clockwork = new mediaburst\ClockworkSMS\Clockwork( $API_KEY, $options ); //Be careful not to post your API Keys to public repositories.
-$messages = array( 
+$messages = array(
     array( 'to' => '441234567891', 'message' => 'This is a test!', 'from' => 'Clockwork' ),
     array( 'to' => '441234567892', 'message' => 'This is a test 2!', 'from' => '84433' )
 );
@@ -229,10 +229,10 @@ Due to the huge variety of PHP setups out there a small proportion of users may 
 The errors will generally look something like this:
 
 ```
-Fatal error: 
+Fatal error:
 Uncaught exception 'Exception' with message 'HTTP Error calling Clockwork API
 HTTP Status: 0
-cURL Erorr: SSL certificate problem, verify that the CA cert is OK. 
+cURL Erorr: SSL certificate problem, verify that the CA cert is OK.
 Details: error:14090086:SSL routines:SSL3_GET_SERVER_CERTIFICATE:certificate verify failed'
 ```
 
@@ -247,7 +247,7 @@ $clockwork = new mediaburst\ClockworkSMS\Clockwork( $API_KEY, $options );  //Be 
 
 #### Setup SSL root certificates on your server
 
-This is much more complicated as it depends on your setup, however there are many guides available online. 
+This is much more complicated as it depends on your setup, however there are many guides available online.
 Try a search term like "windows php curl root certificates" or "ubuntu update root certificates".
 
 
@@ -262,7 +262,7 @@ A copy of this license can be found in license.txt.
 If you have any feedback on this wrapper drop us an email to [hello@clockworksms.com][1].
 
 The project is hosted on GitHub at [https://github.com/mediaburst/clockwork-php][3].
-If you would like to contribute a bug fix or improvement please fork the project 
+If you would like to contribute a bug fix or improvement please fork the project
 and submit a pull request.
 
 [1]: mailto:hello@clockworksms.com

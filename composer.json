@@ -1,5 +1,5 @@
 {
-    "name": "mediaburst/clockworksms",
+    "name": "rockandscissor/clockworksms",
     "description": "ClockworkSMS, International SMS API",
     "license": "MIT",
     "keywords": ["sms"],
@@ -7,13 +7,16 @@
         {
             "name": "Andrew Wise",
             "email": "andy@mediaburst.co.uk"
-        }
+        },
+        {
+            "name": "Matt Stone",
+            "email": "matt@rockandscissor.com"
     ],
     "require": {},
     "require-dev": {},
     "autoload": {
         "psr-4": {
-            "mediaburst\\ClockworkSMS\\": "src"
+            "rockandscissor\\ClockworkSMS\\": "src"
         }
     }
 }

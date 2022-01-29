@@ -389,13 +389,15 @@ class Clockwork {
         break;
         case "Currency":
         foreach ($doc_child->childNodes as $resp_node) {
-          switch ($resp_node->tagName) {
-            case "Symbol":
-            $symbol = $resp_node->nodeValue;
-            break;
-            case "Code":
-            $code = $resp_node->nodeValue;
-            break;
+          if (property_exists($resp_node, 'tagName')) {
+            switch ($resp_node->tagName) {
+              case "Symbol":
+              $symbol = $resp_node->nodeValue;
+              break;
+              case "Code":
+              $code = $resp_node->nodeValue;
+              break;
+            }
           }
         }
         break;

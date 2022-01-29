@@ -25,3 +25,12 @@
 
 * Switched license to MIT rather than ISC as people haven't heard of ISC and they're very similar
 * Added account type to balance checks.
+
+#### 2.0.0 (November 30th, 2017)
+
+* We have added support for composer as a package manager and remove a lot of old code.
+
+#### 2.0.1 (January 29th, 2022)
+
+* New fork by Rock & Scissor to add support for php 7.4+ now that Mediaburst has been acquired by Textanywhere
+* Fixed issue with balance check to make sure tagName exists as a property when looping through DOM items.
