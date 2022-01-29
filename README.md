@@ -1,6 +1,6 @@
 # Clockwork SMS API Wrapper for PHP
 
-This wrapper lets you interact with Clockwork without the hassle of having to create any XML or make HTTP calls. This version of the wrapper has been forked and updated to work with newer version of PHP by Rock & Scissor as Mediaburst was acquired by Textanywhere which means the original repo was abandoned.
+This wrapper lets you interact with Clockwork without the hassle of having to create any XML or make HTTP calls. This version of the wrapper has been forked and updated to work with newer versions of PHP by Rock & Scissor as Mediaburst was acquired by Textanywhere which means the original repo was abandoned. We intend to keep this package up to date as long as the API is still supported by Textanywhere.
 
 ## What's Clockwork?
 
